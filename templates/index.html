@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <div class="box sb3">{{ joke }}
+            <a onclick="say({{ '"%s. %s."'|format(joke, laugh) }})" href="#">Speak</a>
+        </div>
+        <div>
+            <img src="static/single_grandad.png">
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block head %}
+    <script src="/static/js/speak.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/speech_box.css">
+
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}
