@@ -6,11 +6,14 @@
 {% block content %}
     {{ util.flashed_messages(dismissible=True) }}
     <div class="container">
-        <div class="box sb3">{{ joke }}
-            <a onclick="say({{ '"%s. %s."'|format(joke, laugh) }})" href="#">Speak</a>
-        </div>
         <div>
-            <img src="static/single_grandad.png">
+            <img src="/static/img/the_dog_philosopher.jpg">
+        </div>
+        <div class="box sb2">{{ joke }}
+            <p>
+                <a class="speak" onclick="say({{ '"%s... %s."'|format(joke, laugh) }})" href="#">[Speak]</a>
+                <a class="speak" onclick="location.reload(true)" href="#">[New Joke]</a>
+            </p>
         </div>
 
     </div>
@@ -19,6 +22,7 @@
 {% block head %}
     <script src="/static/js/speak.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/speech_box.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     {{ super() }}
     {{ fixes.ie8() }}
