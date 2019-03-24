@@ -25,8 +25,13 @@ def laugh():
 
 @app.route('/')
 def hello_world():
-    joke = replace_double_quotes(pyjokes.get_joke())
+    joke = new_joke()
     return render_template('index.html', joke=joke, laugh=laugh())
+
+@app.route('/joke')
+def new_joke():
+    joke = replace_double_quotes(pyjokes.get_joke())
+    return joke
 
 
 if __name__ == '__main__':

@@ -7,13 +7,14 @@
     {{ util.flashed_messages(dismissible=True) }}
     <div class="container">
         <div>
-            <img src="/static/img/the_dog_philosopher.jpg">
+            <img src="/static/img/the_dog_philosopher.jpg" onload=speechBubble.update()>
         </div>
-        <div class="box sb2">{{ joke }}
+        <div class="box sb2">
             <p>
-                <a class="speak" onclick="say({{ '"%s... %s."'|format(joke, laugh) }})" href="#">[Speak]</a>
-                <a class="speak" onclick="location.reload(true)" href="#">[New Joke]</a>
+                <a class="speak" onclick="speechBubble.say()" href="#">[Speak]</a>
+                <a class="speak" onclick="speechBubble.update()" href="#">[New Joke]</a>
             </p>
+            <span id="joke">"No joke"</span>
         </div>
 
     </div>
